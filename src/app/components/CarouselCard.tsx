@@ -20,15 +20,23 @@ interface CarouselCardProps {
     username: string;
     likes: string;
     comments: string;
+    shopData?: {
+      title: string;
+      price: string;
+      shopName: string;
+      image: string;
+    };
   };
   isActive: boolean;
   onCardClick: () => void;
+  onShopClick?: (e: React.MouseEvent) => void;
 }
 
 export function CarouselCard({
   video,
   isActive,
   onCardClick,
+  onShopClick,
 }: CarouselCardProps) {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -135,12 +143,60 @@ export function CarouselCard({
           </button>
 
           {/* Play/Pause Button */}
-          
+
         </div>
+
+        {/* Shopping Button with Product Info - Bottom Right */}
+        {video.shopData && (
+          <div className="absolute bottom-3 right-3 flex items-center gap-2 z-20">
+            {/* Product Info Card - Expands when active */}
+            <div
+              className={`bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 flex items-center gap-2 transition-all duration-300 overflow-hidden ${
+                isActive ? 'max-w-[200px] opacity-100' : 'max-w-0 opacity-0'
+              }`}
+            >
+              {/* Product Thumbnail */}
+              <div className="w-10 h-10 rounded-md overflow-hidden flex-shrink-0">
+                <ImageWithFallback
+                  src={video.shopData.image}
+                  alt="Product"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Product Details */}
+              <div className="flex flex-col min-w-0">
+                <p className="text-[#FE2C55] font-bold text-[13px] leading-tight">
+                  {video.shopData.price}
+                </p>
+                <p className="text-gray-800 text-[10px] leading-tight truncate">
+                  {video.shopData.title.slice(0, 10)}...
+                </p>
+                <p className="text-gray-500 text-[9px] leading-tight truncate">
+                  {video.shopData.shopName}
+                </p>
+              </div>
+            </div>
+            {/* Shopping Bag Button */}
+            <button
+              className="w-11 h-11 rounded-full bg-[#FFC107] flex items-center justify-center shadow-lg flex-shrink-0 hover:bg-[#FFD54F] transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (onShopClick) {
+                  onShopClick(e);
+                }
+              }}
+            >
+              <ShoppingBag className="w-6 h-6 text-white" strokeWidth={2} />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Description Area - 30% */}
-      <div className="absolute bottom-0 left-0 right-0 h-[25%] bg-gradient-to-t from-black/80 via-black/60 to-transparent backdrop-blur-sm">
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[25%] bg-gradient-to-t from-black/80 via-black/60 to-transparent backdrop-blur-sm cursor-pointer"
+        onClick={onCardClick}
+      >
         <div className="p-3 h-full flex flex-col justify-end">
           {/* Description Text */}
           <p className="text-white text-[13px] leading-[1.4] mb-1.5 line-clamp-2">
@@ -201,18 +257,6 @@ export function CarouselCard({
                 className="w-5 h-5 text-white"
                 strokeWidth={1.5}
               />
-            </button>
-
-            <button
-              className="flex items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="w-6 h-6 rounded-full bg-[#FFC107] flex items-center justify-center">
-                <ShoppingBag
-                  className="w-3.5 h-3.5 text-white"
-                  strokeWidth={2}
-                />
-              </div>
             </button>
 
             <button

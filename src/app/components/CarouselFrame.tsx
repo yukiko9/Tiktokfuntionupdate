@@ -14,6 +14,12 @@ const carouselVideos = [
     username: "@vintage_style_daily",
     likes: "12.4K",
     comments: "845",
+    shopData: {
+      title: "Adidas Vintage 复古卫衣 经典三叶草",
+      price: "$45.99",
+      shopName: "Vintage Style Store",
+      image: "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&h=400&fit=crop",
+    },
   },
   {
     thumbnail:
@@ -24,6 +30,12 @@ const carouselVideos = [
     username: "@sporty_vibes_88",
     likes: "18.2K",
     comments: "1.2K",
+    shopData: {
+      title: "Adidas 三叶草复古运动裤 宽松版型",
+      price: "$52.99",
+      shopName: "Sporty Vibes",
+      image: "https://images.unsplash.com/photo-1552346154-21d32810aba3?w=400&h=400&fit=crop",
+    },
   },
   {
     thumbnail:
@@ -34,6 +46,12 @@ const carouselVideos = [
     username: "@thrift_queen_nyc",
     likes: "23.7K",
     comments: "2.1K",
+    shopData: {
+      title: "Adidas 80年代复古夹克 限量珍藏版",
+      price: "$89.99",
+      shopName: "Thrift Queen NYC",
+      image: "https://images.unsplash.com/photo-1520638023360-722281b2f0a8?w=400&h=400&fit=crop",
+    },
   },
   {
     thumbnail:
@@ -44,6 +62,12 @@ const carouselVideos = [
     username: "@cap_collector_01",
     likes: "9.8K",
     comments: "567",
+    shopData: {
+      title: "Adidas 复古棒球帽 经典款式",
+      price: "$28.99",
+      shopName: "Cap Collector",
+      image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=400&fit=crop",
+    },
   },
   {
     thumbnail:
@@ -54,6 +78,12 @@ const carouselVideos = [
     username: "@sneaker_fanatic_",
     likes: "34.5K",
     comments: "3.4K",
+    shopData: {
+      title: "Adidas Superstar 复刻版运动鞋",
+      price: "$120.00",
+      shopName: "Sneaker Fanatic",
+      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop",
+    },
   },
   {
     thumbnail:
@@ -64,11 +94,17 @@ const carouselVideos = [
     username: "@outfit_guru_pro",
     likes: "28.9K",
     comments: "2.8K",
+    shopData: {
+      title: "Adidas Vintage 全套穿搭套装",
+      price: "$199.99",
+      shopName: "Outfit Guru Pro",
+      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=400&fit=crop",
+    },
   },
 ];
 
 interface CarouselFrameProps {
-  onCardClick: () => void;
+  onCardClick: (cardIndex: number) => void;
   onNavigate?: (direction: "prev" | "next") => void;
   onNavClick?: (nav: string) => void;
 }
@@ -272,7 +308,7 @@ export function CarouselFrame({
               key={idx}
               video={video}
               isActive={idx === activeIndex}
-              onCardClick={onCardClick}
+              onCardClick={() => onCardClick(idx)}
             />
           ))}
         </div>

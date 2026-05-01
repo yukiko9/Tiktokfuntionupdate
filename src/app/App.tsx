@@ -44,7 +44,7 @@ interface VideoFrame {
   badges?: Array<{ text: string; color: string; position: 'top-left' | 'top-right' }>;
 }
 
-const videoFrames: VideoFrame[] = [
+const initialVideoFrames: VideoFrame[] = [
   {
     id: 1,
     type: 'video',
@@ -120,7 +120,144 @@ const videoFrames: VideoFrame[] = [
   },
 ];
 
+// Carousel card video templates
+const carouselVideoTemplates: VideoFrame[] = [
+  {
+    id: 100,
+    type: 'video',
+    bgImage: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    username: '@vintage_style_daily',
+    description: '复古风拉满！这件 adidas vintage 卫衣真的太百搭了，日常出门拍照绝绝子📸 #adidas #adidasvintage #复古穿搭 #OOTD',
+    music: 'Vintage Vibes - LoFi Beats',
+    likes: '12.4K',
+    comments: '845',
+    showFollow: true,
+    showShopIcon: true,
+    hasShop: true,
+    shopData: {
+      title: 'Adidas Vintage 复古卫衣 经典三叶草',
+      price: '$45.99',
+      sold: '3.2K sold',
+      buttonText: 'Add to Cart',
+      image: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&h=400&fit=crop',
+    },
+  },
+  {
+    id: 101,
+    type: 'video',
+    bgImage: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    username: '@sporty_vibes_88',
+    description: '三叶草系列永不过时！这条复古运动裤搭配任何上衣都超好看 🔥 #adidas #三叶草 #运动裤 #streetwear',
+    music: 'Streetwear Anthem - Hip Hop Mix',
+    likes: '18.2K',
+    comments: '1.2K',
+    showFollow: true,
+    showShopIcon: true,
+    hasShop: true,
+    shopData: {
+      title: 'Adidas 三叶草复古运动裤 宽松版型',
+      price: '$52.99',
+      sold: '2.8K sold',
+      buttonText: 'Add to Cart',
+      image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=400&h=400&fit=crop',
+    },
+  },
+  {
+    id: 102,
+    type: 'video',
+    bgImage: 'https://images.unsplash.com/photo-1520638023360-722281b2f0a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    username: '@thrift_queen_nyc',
+    description: '找到这件复古夹克真是太幸运了！80年代经典款，状态完美 ✨ #adidasvintage #复古夹克 #thrifted #vintagefashion',
+    music: '80s Synth Wave - Retro Sound',
+    likes: '23.7K',
+    comments: '2.1K',
+    showFollow: true,
+    showShopIcon: true,
+    hasShop: true,
+    badges: [
+      { text: '✓ Vintage Certified', color: 'bg-amber-500 text-white', position: 'top-left' },
+    ],
+    shopData: {
+      title: 'Adidas 80年代复古夹克 限量珍藏版',
+      price: '$89.99',
+      sold: '456 sold',
+      buttonText: 'Add to Cart',
+      image: 'https://images.unsplash.com/photo-1520638023360-722281b2f0a8?w=400&h=400&fit=crop',
+    },
+  },
+  {
+    id: 103,
+    type: 'video',
+    bgImage: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    username: '@cap_collector_01',
+    description: '复古棒球帽配白T，简约又有型！adidas 真的是王者 👑 #adidas #棒球帽 #simpleoutfit #casualstyle',
+    music: 'Casual Sunday - Chill Beats',
+    likes: '9.8K',
+    comments: '567',
+    showFollow: true,
+    showShopIcon: true,
+    hasShop: true,
+    shopData: {
+      title: 'Adidas 复古棒球帽 经典款式',
+      price: '$28.99',
+      sold: '5.6K sold',
+      buttonText: 'Add to Cart',
+      image: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=400&fit=crop',
+    },
+  },
+  {
+    id: 104,
+    type: 'video',
+    bgImage: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    username: '@sneaker_fanatic_',
+    description: '这双 Superstar 复刻版真的绝了！经典永不过时 👟 #adidasSuperstar #sneakerhead #复古球鞋 #adidas',
+    music: 'Sneaker Culture - Urban Beat',
+    likes: '34.5K',
+    comments: '3.4K',
+    showFollow: true,
+    showShopIcon: true,
+    hasShop: true,
+    badges: [
+      { text: '✓ Limited Edition', color: 'bg-red-500 text-white', position: 'top-left' },
+    ],
+    shopData: {
+      title: 'Adidas Superstar 复刻版运动鞋',
+      price: '$120.00',
+      originalPrice: '$150.00',
+      sold: '1.8K sold',
+      buttonText: 'Add to Cart',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+    },
+  },
+  {
+    id: 105,
+    type: 'video',
+    bgImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    username: '@outfit_guru_pro',
+    description: '全套 adidas vintage 穿搭教程来啦！从头到脚都是复古 🎨 #adidas #fulllook #vintagestyle #fashiontutorial',
+    music: 'Fashion Show - Runway Mix',
+    likes: '28.9K',
+    comments: '2.8K',
+    showFollow: true,
+    showShopIcon: true,
+    hasShop: true,
+    badges: [
+      { text: '✓ Bundle Deal', color: 'bg-green-500 text-white', position: 'top-left' },
+    ],
+    shopData: {
+      title: 'Adidas Vintage 全套穿搭套装',
+      price: '$199.99',
+      originalPrice: '$299.99',
+      sold: '890 sold',
+      buttonText: 'Add to Cart',
+      showColors: true,
+      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=400&fit=crop',
+    },
+  },
+];
+
 export default function App() {
+  const [videoFrames, setVideoFrames] = useState<VideoFrame[]>(initialVideoFrames);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [likedFrames, setLikedFrames] = useState<Set<number>>(new Set());
   const [showComments, setShowComments] = useState(false);
@@ -241,9 +378,22 @@ export default function App() {
     return newCount >= 1000 ? (newCount / 1000).toFixed(1) + 'K' : newCount.toString();
   };
 
-  const handleCarouselCardClick = () => {
-    setNotification('Jump to full video or product page');
-    setTimeout(() => setNotification(''), 2000);
+  const handleCarouselCardClick = (cardIndex: number) => {
+    // Get the corresponding video template for this card
+    const newVideo = carouselVideoTemplates[cardIndex];
+
+    if (newVideo) {
+      // Insert the new video right after the current carousel frame
+      const newVideoFrames = [...videoFrames];
+      newVideoFrames.splice(currentFrame + 1, 0, newVideo);
+      setVideoFrames(newVideoFrames);
+
+      // Jump to the newly inserted video
+      setCurrentFrame(currentFrame + 1);
+
+      setNotification('正在播放完整视频...');
+      setTimeout(() => setNotification(''), 2000);
+    }
   };
 
   const handleNavClick = (nav: string) => {
